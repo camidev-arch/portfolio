@@ -1,0 +1,219 @@
+<template>
+  <div class="tokyo_tm_portfolio">
+    <div class="tokyo_tm_title">
+      <div class="title_flex">
+        <div class="left">
+          <span>Portafolio</span>
+          <h3>Portafolio Web</h3>
+        </div>
+        <!-- End Left -->
+        <div class="portfolio_filter">
+          <ul>
+            <li>
+              <a
+                v-on:click="activetab = 1"
+                :class="[activetab === 1 ? 'active' : '']"
+                >Todo</a
+              >
+            </li>
+            <!-- End All for tabcontent 1 -->
+            <li>
+              <a
+                v-on:click="activetab = 2"
+                :class="[activetab === 2 ? 'active' : '']"
+                >CMS</a
+              >
+            </li>
+            <!-- End Vimeo tabcontent 2 -->
+            <li>
+              <a
+                v-on:click="activetab = 3"
+                :class="[activetab === 3 ? 'active' : '']"
+                >Javascript</a
+              >
+            </li>
+            <!-- End .Youtube tabcontent 3 -->
+            <li>
+              <a
+                v-on:click="activetab = 4"
+                :class="[activetab === 4 ? 'active' : '']"
+                >Mix</a
+              >
+            </li>
+            <!-- End Mix tabcontent 4 -->
+
+            <!-- End Gallery tabcontent 5 -->
+          </ul>
+        </div>
+        <!-- End .portfolio-filter -->
+      </div>
+    </div>
+    <!-- End tokyo_tm_title -->
+
+    <div v-if="activetab === 1" class="tabcontent">
+      <ul class="portfolio_list">
+        <CoolLightBox :items="allItems" :index="index" @close="index = null">
+        </CoolLightBox>
+        <li
+          v-for="(image, imageIndex) in allItems"
+          :key="imageIndex"
+          @click="index = imageIndex"
+        >
+          <div class="inner">
+            <div class="entry tokyo_tm_portfolio_animation_wrap">
+              <img class="image" :src="image.thumb" alt="Portfolio" />
+            </div>
+          </div>
+        </li>
+        <!-- End li -->
+      </ul>
+      <!-- End .portfolio_list -->
+    </div>
+    <!-- End .tabcontent 1 -->
+
+    <div v-if="activetab === 2" class="tabcontent">
+      <ul class="portfolio_list">
+        <CoolLightBox :items="vimeoItems" :index="index" @close="index = null">
+        </CoolLightBox>
+        <li
+          v-for="(image, imageIndex) in vimeoItems"
+          :key="imageIndex"
+          @click="index = imageIndex"
+        >
+          <div class="inner">
+            <div class="entry tokyo_tm_portfolio_animation_wrap">
+              <img class="image" :src="image.thumb" alt="Portfolio" />
+            </div>
+          </div>
+        </li>
+        <!-- End li -->
+      </ul>
+      <!-- End .portfolio_list -->
+    </div>
+    <!-- End .tabcontent 2 -->
+    
+    <div v-if="activetab === 3" class="tabcontent">
+      <ul class="portfolio_list">
+        <CoolLightBox
+          :items="youtubeItems"
+          :index="index"
+          @close="index = null"
+        >
+        </CoolLightBox>
+        <li
+          v-for="(image, imageIndex) in youtubeItems"
+          :key="imageIndex"
+          @click="index = imageIndex"
+        >
+          <div class="inner">
+            <div class="entry tokyo_tm_portfolio_animation_wrap">
+              <img class="image" :src="image.thumb" alt="Portfolio" />
+            </div>
+          </div>
+        </li>
+        <!-- End li -->
+      </ul>
+      <!-- End .portfolio_list -->
+    </div>
+    <!-- End .tabcontent 3 -->
+
+    <div v-if="activetab === 4" class="tabcontent">
+      <ul class="portfolio_list">
+        <CoolLightBox :items="mixItems" :index="index" @close="index = null">
+        </CoolLightBox>
+        <li
+          v-for="(image, imageIndex) in mixItems"
+          :key="imageIndex"
+          @click="index = imageIndex"
+        >
+          <div class="inner">
+            <div class="entry tokyo_tm_portfolio_animation_wrap">
+              <img class="image" :src="image.thumb" alt="Portfolio" />
+            </div>
+          </div>
+        </li>
+        <!-- End li -->
+      </ul>
+      <!-- End .portfolio_list -->
+    </div>
+    <!-- End .tabcontent 4 -->
+
+
+    <!-- End .tabcontent 5 -->
+  </div>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        activetab: 1,
+        allItems: [
+          {
+            src: require("../assets/img/portfolio/5.jpg"),
+            thumb: require("../assets/img/portfolio/5.jpg"),
+          },
+          {
+            src: require("../assets/img/portfolio/biiosmart.png"),
+            thumb: require("../assets/img/portfolio/2.jpg"),
+            "link": "href=https://biiosmart.com/"
+          },
+          {
+            src: require("../assets/img/portfolio/4.jpg"),
+            thumb: require("../assets/img/portfolio/4.jpg"),
+          },
+          {
+            src: require("../assets/img/portfolio/3.jpg"),
+            thumb: require("../assets/img/portfolio/3.jpg"),
+          },
+        ],
+        vimeoItems: [
+          {
+            src: require("../assets/img/portfolio/3.jpg"),
+            thumb: require("../assets/img/portfolio/3.jpg"),
+          },
+          {
+            src: require("../assets/img/portfolio/biiosmart.png"),
+            thumb: require("../assets/img/portfolio/2.jpg"),
+          },
+                    {
+            src: require("../assets/img/portfolio/5.jpg"),
+            thumb: require("../assets/img/portfolio/5.jpg"),
+          },
+                    {
+            src: require("../assets/img/slider/2.jpg"),
+            thumb: require("../assets/img/slider/2.jpg"),
+          }
+        ],
+        youtubeItems: [
+          {
+            src: require("../assets/img/portfolio/biiosmart.png"),
+            thumb: require("../assets/img/portfolio/2.jpg"),
+          },
+          {
+            src: require("../assets/img/portfolio/4.jpg"),
+            thumb: require("../assets/img/portfolio/4.jpg"),
+          },
+        ],
+        mixItems: [
+          {
+            src: require("../assets/img/portfolio/5.jpg"),
+            thumb: require("../assets/img/portfolio/5.jpg"),
+          },
+          {
+            src: require("../assets/img/portfolio/4.jpg"),
+            thumb: require("../assets/img/portfolio/4.jpg"),
+          },
+          {
+            src: require("../assets/img/portfolio/3.jpg"),
+            thumb: require("../assets/img/portfolio/3.jpg"),
+          },
+        ],
+        index: null,
+      };
+    },
+  };
+
+</script>
+
+<style lang="scss" scoped></style>
